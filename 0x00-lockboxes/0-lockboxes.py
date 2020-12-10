@@ -12,6 +12,8 @@ def canUnlockAll(boxes):
     """
     index = [0]
     keys = [0]
+    if boxes[0] == [] or type(boxes[0]) is not list:
+        return False
     for i, box in boxes:
         index.append(i)
         for k in box:
