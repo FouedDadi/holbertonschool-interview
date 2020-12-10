@@ -13,7 +13,7 @@ def canUnlockAll(boxes):
     seen = [False] * len(boxes)
     seen[0] = True
     stack = [0]
-    if not boxes[0] or not isinstance(boxes[0], list):
+    if not boxes[0] or type(boxes) is not list:
         return False
     while stack:
         node = stack.pop()
