@@ -37,5 +37,10 @@ cur = cur->next;
 new->next = cur->next;
 cur->next = new;
 }
+else
+{
+*head = new;
+new->next = *head;
+}
 return (new);
 }
