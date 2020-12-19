@@ -16,6 +16,7 @@ if (new == NULL)
 return (NULL);
 }
 new->n = number;
+new->next = NULL;
 return (new);
 }
 /**
