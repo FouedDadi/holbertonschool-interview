@@ -32,8 +32,8 @@ new = new_node(number);
 cur = *head;
 if (*head == NULL || (*head)->n > number)
 {
-new->next = *head;
 *head = new;
+new->next = *head;
 return (new);
 }
 while (cur->next != NULL && cur->next->n < number)
