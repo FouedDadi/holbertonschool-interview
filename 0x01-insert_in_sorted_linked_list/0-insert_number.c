@@ -33,8 +33,9 @@ if (*head == NULL || (*head)->n > number)
 {
 new->next = *head;
 *head = new;
+return (new);
 }
-while (cur->next != NULL && cur->next->n <= number)
+while (cur->next != NULL && cur->next->n < number)
 cur = cur->next;
 tmp = cur->next;
 cur->next = new;
