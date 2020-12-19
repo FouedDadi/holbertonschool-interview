@@ -36,6 +36,7 @@ new->next = *head;
 *head = new;
 }
 while (cur->next != NULL && cur->next->n < number)
+cur = cur->next;
 tmp = cur->next;
 cur->next = new;
 new->next = tmp;
