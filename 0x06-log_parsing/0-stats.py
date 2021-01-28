@@ -21,17 +21,20 @@ if __name__ == "__main__":
                 code = words[-2]
                 if code in code_dct.keys():
                     code_dct[code] += 1
-            if count == 10:
-                file_size += int(words[-1])
+            file_size += int(words[-1])
+            if count % 10 == 0:
                 print("file size = {}".format(file_size))
                 for code in sorted(code_dct):
                     if code_dct[code] != 0:
                         print("{}: {}".format(code, code_dct[code]))
                 count = 0
     except KeyboardInterrupt:
-        file_size += int(words[-1])
         print("file size = {}".format(file_size))
         for code in sorted(code_dct):
             if code_dct[code] != 0:
                 print("{}: {}".format(code, code_dct[code]))
         raise
+    print("file size = {}".format(file_size))
+    for code in sorted(code_dct):
+        if code_dct[code] != 0:
+            print("{}: {}".format(code, code_dct[code]))
