@@ -34,4 +34,7 @@ if __name__ == "__main__":
             if code_dct[code] != 0:
                 print("{}: {}".format(code, code_dct[code]))
         raise
-
+    print("File size: {}".format(file_size))
+    for code in sorted(code_dct):
+        if code_dct[code] != 0:
+            print("{}: {}".format(code, code_dct[code]))
