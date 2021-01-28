@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""script that reads stdin line by line and computes metrics
+""" script that reads stdin line by line and computes metrics
 """
 import sys
 
@@ -15,9 +15,9 @@ code_dct = {
     }
 file_size = 0
 def print_status():
-    """[summary]
+    """print status
     """
-    print("file size: {:d}".format(file_size))
+    print("File size: {:d}".format(file_size))
     for code in sorted(code_dct.keys()):
         if code_dct[code]:
             print("{}: {:d}".format(code, code_dct[code]))
