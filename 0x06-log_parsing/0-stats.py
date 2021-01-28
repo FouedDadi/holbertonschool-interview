@@ -14,10 +14,10 @@ code_dct = {"200": 0,
 
 file_size = 0
 def print_status():
-    print("file size: {}".format(file_size))
+    print("file size: {:d}".format(file_size))
     for code in sorted(code_dct.keys()):
         if code_dct[code] != 0:
-            print("{}: {}".format(code, code_dct[code]))
+            print("{}: {:d}".format(code, code_dct[code]))
 if __name__ == "__main__":
     count = 1
     try:
