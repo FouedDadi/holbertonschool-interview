@@ -25,9 +25,10 @@ if __name__ == "__main__":
             if len(line) > 2:
                 words = line.split()
                 code = words[-2]
+                size = words[-1]
                 if code in code_dct.keys():
                     code_dct[code] += 1
-            file_size += int(words[-1])
+            file_size += int(size)
             if count == 10:
                 print_status()
                 count = 0
