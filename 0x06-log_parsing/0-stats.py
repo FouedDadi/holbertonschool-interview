@@ -23,18 +23,18 @@ if __name__ == "__main__":
                     code_dct[code] += 1
             file_size += int(words[-1])
             if count % 10 == 0:
-                print("File size = {}".format(file_size))
+                print("File size: {}".format(file_size))
                 for code in sorted(code_dct):
                     if code_dct[code] != 0:
                         print("{}: {}".format(code, code_dct[code]))
                 count = 0
     except KeyboardInterrupt:
-        print("File size = {}".format(file_size))
+        print("File size: {}".format(file_size))
         for code in sorted(code_dct):
             if code_dct[code] != 0:
                 print("{}: {}".format(code, code_dct[code]))
         raise
-    print("File size = {}".format(file_size))
+    print("File size: {}".format(file_size))
     for code in sorted(code_dct):
         if code_dct[code] != 0:
             print("{}: {}".format(code, code_dct[code]))
