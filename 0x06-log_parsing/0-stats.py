@@ -17,13 +17,10 @@ if __name__ == "__main__":
         for line in sys.stdin:
             count += 1
             if len(line) > 2:
-                try:
-                    words = line.split()
-                    code = words[-2]
-                    if code in code_dct.keys():
-                        code_dct[code] += 1
-                except Exception:
-                    pass
+                words = line.split()
+                code = words[-2]
+                if code in code_dct.keys():
+                    code_dct[code] += 1
             file_size += int(words[-1])
             if count % 10 == 0:
                 print("File size: {}".format(file_size))
@@ -37,7 +34,4 @@ if __name__ == "__main__":
             if code_dct[code] != 0:
                 print("{}: {}".format(code, code_dct[code]))
         raise
-    print("File size: {}".format(file_size))
-    for code in sorted(code_dct):
-        if code_dct[code] != 0:
-            print("{}: {}".format(code, code_dct[code]))
+
