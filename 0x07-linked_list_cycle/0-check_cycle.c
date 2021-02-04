@@ -13,8 +13,8 @@ listint_t *p = list;
 listint_t *q = list;
 while (q && p && p->next)
 {
-p = p->next;
-q = q->next->next;
+q = q->next;
+p = p->next->next;
 if (q == p)
 return (1);
 }
