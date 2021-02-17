@@ -10,37 +10,22 @@ def validUTF8(data):
     Returns:
         boolean: returns true if the set of data is UTF-8 valid or false if not
     """
-    num_bits = 8
-    max_ones = 4
-    index = 0
-    while index < len(data):
-        number = data[index] & (2 ** 7)
-        number >>= (num_bits - 1)
-        if number == 0:
-            index += 1
-            continue
-        number_of_ones = 0
-        while True:
-            number = data[index] & (2 ** (7 - number_of_ones))
-            number >>= (num_bits - number_of_ones - 1)
-            if number == 1:
-                number_of_ones += 1
-            else:
-                break
-            if number_of_ones > max_ones:
+    n_bytes = 0
+    for num in data:
+        bin_rep = format(num, '#010b')[-8:]
+        if n_bytes == 0:
+            for bit in bin_rep:
+                if bit == '0': break
+                n_bytes += 1
+            if n_bytes == 0:
+                continue
+            if n_bytes == 1 or n_bytes > 4:
                 return False
-        if number_of_ones == 1:
-            return False
-        index += 1
-        if index >= len(data) or index >= (index + number_of_ones - 1):
-            return False
-        for i in range(index, index + number_of_ones - 1):
-            number = data[i]
-            number >>= (num_bits - 1)
-            if number != 1:
+        else:
+            if not (bin_rep[0] == '1' and bin_rep[1] == '0'):
                 return False
-            number >>= (num_bits - 1)
-            if number != 0:
-                return False
-            index += 1
-    return True
+        n_bytes -= 1
+    if not n_bytes:
+        return True
+    else:
+        return False
