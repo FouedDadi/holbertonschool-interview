@@ -23,7 +23,7 @@ def validUTF8(data):
             if num_of_byts == 1 or num_of_byts > 4:
                 return False
         else:
-            if (repres[0] != '1' and repres[1] != '0'):
+            if not (repres[0] == '1' and repres[1] == '0'):
                 return False
         num_of_byts = num_of_byts - 1
     if not num_of_byts:
