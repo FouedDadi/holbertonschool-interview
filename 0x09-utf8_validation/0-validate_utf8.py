@@ -10,6 +10,8 @@ def validUTF8(data):
     Returns:
         boolean: returns true if the set of data is UTF-8 valid or false if not
     """
+    if not data or len(data) == 0:
+        return True
     suc_10 = 0
     for b in data:
         b = bin(b).replace('0b', '').rjust(8, '0')
