@@ -2,7 +2,7 @@
 
 const id = process.argv[2];
 const url = `https://swapi-api.hbtn.io/api/films/${id}/`;
-const request = require("request");
+const request = require('request');
 
 request(url, async function (error, res, body) {
   if (res) {
@@ -12,9 +12,15 @@ request(url, async function (error, res, body) {
           if (result) {
             resolve(JSON.parse(body).name);
           }
+          if (err) {
+            console.log(err);
+          }
         });
       });
       console.log(result);
+    }
+    if (error) {
+      console.log(error);
     }
   }
 });
