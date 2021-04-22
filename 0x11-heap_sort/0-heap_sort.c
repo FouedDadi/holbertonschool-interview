@@ -1,62 +1,56 @@
 #include "sort.h"
+#include <stdio.h>
+#include <stdlib.h>
 /**
- * swap - swaps elements
- *
- * @i: first element
- * @j: second element
+ * swap - swap a an b
+ * @a: element a
+ * @b: element b
  */
-void swap(int *i, int *j)
+void swap(int *a, int *b)
 {
-	int temp = *i;
-	*i = *j;
-	*j = temp;
+int temp = *a;
+*a = *b;
+*b = temp;
 }
 /**
- * build_heap - builds heap out of array
- *
- * @array: the array
- * @i: heap size
- * @j: root index
- * @size: Number of elements of the array
+ * build_heap - building a heap
+ * @array: array
+ * @a: size
+ * @b: index
+ * @size: size of array
  */
-void build_heap(int *array, int i, int j, size_t size)
+void build_heap(int *array, int a, int b, size_t size)
 {
-	int max = j;
-	int left = j * 2 + 1;
-	int right = j * 2 + 2;
-
-	if (left < i && array[left] > array[max])
-		max = left;
-
-	if (right < i && array[right] > array[max])
-		max = right;
-
-	if (max != j)
-	{
-		swap(&array[j], &array[max]);
-		print_array(array, size);
-		build_heap(array, i, max, size);
-	}
+int largest = b;
+int left = 2 * b + 1;
+int right = 2 * b + 2;
+if (left < a && array[left] > array[largest])
+largest = left;
+if (right < a && array[right] > array[largest])
+largest = right;
+if (largest != b)
+{
+swap(&array[b], &array[largest]);
+print_array(array, size);
+build_heap(array, a, largest, size);
+}
 }
 /**
- * heap_sort - sorts an array of integers in ascending order
- * using the Heap sort algorithm
- *
- * @array: an unordered array
- * @size: Number of elements of the array
+ * heap_sort - sorting heap
+ * @array: array
+ * @size: size of array
  */
 void heap_sort(int *array, size_t size)
 {
-	int i;
-
-	for (i = size / 2 - 1; i >= 0; i--)
-		build_heap(array, size, i, size);
-
-	for (i = size - 1; i >= 0; i--)
-	{
-		swap(&array[0], &array[i]);
-		if (i != 0)
-			print_array(array, size);
-		build_heap(array, i, 0, size);
-	}
+for (int b = size / 2 - 1; b >= 0; b--)
+build_heap(array, size, b, size);
+for (int b = size - 1; b >= 0; b--)
+{
+if (array[0] >= array[b])
+{
+swap(&array[0], &array[b]);
+print_array(array, size);
+}
+build_heap(array, b, 0, size);
+}
 }
