@@ -14,7 +14,6 @@ int temp = *a;
 }
 /**
  * heapify - building a heap
- *
  * @array: array
  * @a: size
  * @b: index
@@ -38,7 +37,6 @@ heapify(array, a, largest, size);
 }
 /**
  * heap_sort - sorting heap
- *
  * @array: array
  * @size: size of array
  */
