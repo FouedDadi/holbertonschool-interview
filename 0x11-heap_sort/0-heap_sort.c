@@ -47,11 +47,9 @@ for (a = size / 2 - 1; a >= 0; a--)
 heapify(array, size, a, size);
 for (a = size - 1; a >= 0; a--)
 {
-if (array[0] >= array[a])
-{
 swap(&array[0], &array[a]);
+if (a != 0)
 print_array(array, size);
-}
-maxHeapify(array, a, 0, size);
+heapify(array, a, 0, size);
 }
 }
