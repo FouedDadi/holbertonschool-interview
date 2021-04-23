@@ -13,13 +13,13 @@ int temp = *a;
 *b = temp;
 }
 /**
- * build_heap - building a heap
+ * heapify - building a heap
  * @array: array
  * @a: size
  * @b: index
  * @size: size of array
  */
-void build_heap(int *array, int a, int b, size_t size)
+void heapify(int *array, int a, int b, size_t size)
 {
 int largest = b;
 int left = 2 * b + 1;
@@ -32,7 +32,7 @@ if (largest != b)
 {
 swap(&array[b], &array[largest]);
 print_array(array, size);
-build_heap(array, a, largest, size);
+heapify(array, a, largest, size);
 }
 }
 /**
@@ -42,15 +42,16 @@ build_heap(array, a, largest, size);
  */
 void heap_sort(int *array, size_t size)
 {
-for (int b = size / 2 - 1; b >= 0; b--)
-build_heap(array, size, b, size);
-for (int b = size - 1; b >= 0; b--)
-{
-if (array[0] >= array[b])
-{
-swap(&array[0], &array[b]);
-print_array(array, size);
-}
-build_heap(array, b, 0, size);
-}
+	int i;
+
+	for (i = size / 2 - 1; i >= 0; i--)
+		build_heap(array, size, i, size);
+
+	for (i = size - 1; i >= 0; i--)
+	{
+		swap(&array[0], &array[i]);
+		if (i != 0)
+			print_array(array, size);
+		build_heap(array, i, 0, size);
+	}
 }
