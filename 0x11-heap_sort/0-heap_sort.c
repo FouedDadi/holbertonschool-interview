@@ -21,18 +21,22 @@ int temp = *a;
  */
 void heapify(int *array, int a, int b, size_t size)
 {
-int largest = b;
-int left = 2 * b + 1;
-int right = 2 * b + 2;
-if (left < a && array[left] > array[largest])
-largest = left;
-if (right < a && array[right] > array[largest])
-largest = right;
-if (largest != b)
-{
-swap(&array[b], &array[largest]);
-print_array(array, size);
-heapify(array, a, largest, size);
+    int max = b;
+	int left = b * 2 + 1;
+	int right = b * 2 + 2;
+
+	if (left < a && array[left] > array[max])
+		max = left;
+
+	if (right < a && array[right] > array[max])
+		max = right;
+
+	if (max != b)
+	{
+		swap(&array[b], &array[max]);
+		print_array(array, size);
+		build_heap(array, a, max, size);
+	}
 }
 }
 /**
@@ -47,9 +51,11 @@ for (b = size / 2 - 1; b >= 0; b--)
 heapify(array, size, b, size);
 for (b = size - 1; b >= 0; b--)
 {
+if (array[0] >= array[b])
+{
 swap(&array[0], &array[b]);
-if (b != 0)
 print_array(array, size);
-build_heap(array, b, 0, size);
+}
+heapify(array, b, 0, size);
 }
 }
