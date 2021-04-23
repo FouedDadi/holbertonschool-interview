@@ -6,11 +6,11 @@
  * @a: element a
  * @b: element b
  */
-void swap(int *i, int *j)
+void swap(int *a, int *b)
 {
-int temp = *i;
-*i = *j;
-*j = temp;
+int temp = *a;
+*a = *b;
+*b = temp;
 }
 /**
  * heapify - building a heap
@@ -19,23 +19,23 @@ int temp = *i;
  * @b: index
  * @size: size of array
  */
-void build_heap(int *array, int i, int j, size_t size)
+void heapify(int *array, int a, int b, size_t size)
 {
-	int max = j;
-	int left = j * 2 + 1;
-	int right = j * 2 + 2;
+	int largest = b;
+	int left = b * 2 + 1;
+	int right = b * 2 + 2;
 
-	if (left < i && array[left] > array[max])
-		max = left;
+	if (left < a && array[left] > array[largest])
+		largest = left;
 
-	if (right < i && array[right] > array[max])
-		max = right;
+	if (right < a && array[right] > array[largest])
+		largest = right;
 
-	if (max != j)
+	if (largest != b)
 	{
-		swap(&array[j], &array[max]);
+		swap(&array[b], &array[largest]);
 		print_array(array, size);
-		build_heap(array, i, max, size);
+		heapify(array, a, largest, size);
 	}
 }
 /**
@@ -45,17 +45,17 @@ void build_heap(int *array, int i, int j, size_t size)
  */
 void heap_sort(int *array, size_t size)
 {
-	int i;
+	int a;
 
-	for (i = size / 2 - 1; i >= 0; i--)
-		build_heap(array, size, i, size);
+	for (a = size / 2 - 1; a >= 0; a--)
+		heapify(array, size, a, size);
 
-	for (i = size - 1; i >= 0; i--)
+	for (a = size - 1; a >= 0; a--)
 	{
-		swap(&array[0], &array[i]);
-		if (i != 0)
+		swap(&array[0], &array[a]);
+		if (a != 0)
 			print_array(array, size);
-		build_heap(array, i, 0, size);
+		heapify(array, a, 0, size);
 	}
 }
 
