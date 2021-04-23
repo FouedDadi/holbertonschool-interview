@@ -42,16 +42,14 @@ heapify(array, a, largest, size);
  */
 void heap_sort(int *array, size_t size)
 {
-	int i;
-
-	for (i = size / 2 - 1; i >= 0; i--)
-		build_heap(array, size, i, size);
-
-	for (i = size - 1; i >= 0; i--)
-	{
-		swap(&array[0], &array[i]);
-		if (i != 0)
-			print_array(array, size);
-		build_heap(array, i, 0, size);
-	}
+int b;
+for (b = size / 2 - 1; b >= 0; b--)
+heapify(array, size, b, size);
+for (b = size - 1; b >= 0; b--)
+{
+swap(&array[0], &array[b]);
+if (b != 0)
+print_array(array, size);
+build_heap(array, b, 0, size);
+}
 }
