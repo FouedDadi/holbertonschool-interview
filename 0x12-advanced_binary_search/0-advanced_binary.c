@@ -27,7 +27,7 @@ printf("\n");
 int recursivebinary(int *array, int l, int r, int value)
 {
 int mid;
-if (l < r)
+if (r > l)
 {
 print_array(array, l, r);
 mid = l + (r - l) / 2;
