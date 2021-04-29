@@ -30,7 +30,7 @@ int mid;
 if (r > l)
 {
 print_array(array, l, r);
-mid = l + (r - l) / 2;
+mid = (r - l) / 2 + l;
 if (array[mid] < value)
 return (recursivebinary(array, mid + 1, r, value));
 if (array[mid] >= value)
