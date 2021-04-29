@@ -26,7 +26,7 @@ printf("\n");
  */
 int recursivebinary(int *array, int l, int r, int value)
 {
-size_t mid;
+int mid;
 
 	if (l < r)
 	{
@@ -34,13 +34,14 @@ size_t mid;
 		print_array(array, (int)l, (int)r);
 		if (array[mid] >= value)
 			return (recursivebinary(array, l, mid, value));
-		else
+		if (array[mid] < value)
 			return (recursivebinary(array, mid + 1, r, value));
-		return ((int)(mid));
+        if (array[mid] == value)
+		    return (mid);
 	}
 	if (array[l] == value)
 		return (l);
-	print_array(array, (int)l, (int)r);
+	print_array(array, l, r);
 	return (-1);
 }
 /**
