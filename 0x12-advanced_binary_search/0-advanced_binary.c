@@ -26,21 +26,22 @@ printf("\n");
  */
 int recursivebinary(int *array, int l, int r, int value)
 {
-if (r > l)
-{
-print_array(array, l, r);
-int mid = l + (r - l) / 2;
-if (array[mid] < value)
-return (recursivebinary(array, mid + 1, r, value));
-if (array[mid] >= value)
-return (recursivebinary(array, l, mid, value));
-if (array[mid] == value)
-return (mid);
-}
-if (array[l] == value)
-return (l);
-print_array(array, l, r);
-return (-1);
+size_t mid;
+
+	if (l < r)
+	{
+		mid = l + (r - l) / 2;
+		print_array(array, (int)l, (int)r);
+		if (array[mid] >= value)
+			return (recursivebinary(array, l, mid, value));
+		else
+			return (recursivebinary(array, mid + 1, r, value));
+		return ((int)(mid));
+	}
+	if (array[l] == value)
+		return (l);
+	print_array(array, (int)l, (int)r);
+	return (-1);
 }
 /**
  * advanced_binary - function to search for value in array
