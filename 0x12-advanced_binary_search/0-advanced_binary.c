@@ -26,11 +26,10 @@ printf("\n");
  */
 int recursivebinary(int *array, int l, int r, int value)
 {
-int mid;
 if (r > l)
 {
 print_array(array, l, r);
-mid = (r - l) / 2 + l;
+int mid = (r - l) / 2 + l;
 if (array[mid] < value)
 return (recursivebinary(array, mid + 1, r, value));
 if (array[mid] >= value)
