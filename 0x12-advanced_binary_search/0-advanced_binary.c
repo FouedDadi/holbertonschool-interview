@@ -29,8 +29,8 @@ int recursivebinary(int *array, int l, int r, int value)
 int mid;
 if (l < r)
 {
-mid = l + (r - l) / 2;
 print_array(array, l, r);
+mid = l + (r - l) / 2;
 if (array[mid] < value)
 return (recursivebinary(array, mid + 1, r, value));
 if (array[mid] >= value)
