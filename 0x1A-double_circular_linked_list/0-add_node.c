@@ -7,7 +7,7 @@
  */
 List *ptr_node(char *str)
 {
-List *ptr = NULL;
+struct List *ptr = NULL;
 ptr = malloc(sizeof(List));
 if (!ptr)
 return (NULL);
@@ -27,7 +27,7 @@ return (ptr);
  */
 List *add_node_end(List **list, char *str)
 {
-List *temp, *ptr;
+struct List *temp, *ptr;
 ptr = ptr_node(str);
 if (ptr == NULL)
 {
@@ -66,7 +66,7 @@ return (ptr);
  */
 List *add_node_begin(List **list, char *str)
 {
-List *temp, *ptr;
+struct List *temp, *ptr;
 ptr = ptr_node(str);
 if (ptr == NULL)
 {
