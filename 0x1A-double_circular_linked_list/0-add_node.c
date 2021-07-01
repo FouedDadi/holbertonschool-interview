@@ -9,9 +9,13 @@ List *ptr_node(char *str)
 {
 struct List *ptr = NULL;
 ptr = malloc(sizeof(List));
+if (!ptr)
+return (NULL);
 ptr->str = strdup(str);
-ptr->prev = NULL;
+if (!ptr->str)
+return (NULL);
 ptr->next = NULL;
+ptr->prev = NULL;
 return (ptr);
 }
 
