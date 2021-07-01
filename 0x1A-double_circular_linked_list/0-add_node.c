@@ -7,7 +7,7 @@
  */
 List *ptr_node(char *str)
 {
-struct List *ptr = NULL;
+List *ptr = NULL;
 ptr = malloc(sizeof(List));
 if (!ptr)
 return (NULL);
@@ -27,7 +27,7 @@ return (ptr);
  */
 List *add_node_end(List **list, char *str)
 {
-struct List *temp, *ptr;
+List *temp, *ptr;
 ptr = ptr_node(str);
 if (ptr == NULL)
 {
@@ -49,10 +49,9 @@ while (temp->next != (*list))
 {
 temp = temp->next;
 }
-temp = (*list)->prev;
 temp->next = ptr;
-(*list)->prev = ptr;
 ptr->prev = temp;
+(*list)->prev = ptr;
 ptr->next = (*list);
 }
 }
@@ -67,7 +66,7 @@ return (ptr);
  */
 List *add_node_begin(List **list, char *str)
 {
-struct List *temp, *ptr;
+List *temp, *ptr;
 ptr = ptr_node(str);
 if (ptr == NULL)
 {
@@ -89,10 +88,9 @@ while (temp->next != (*list))
 {
 temp = temp->next;
 }
-temp = (*list)->prev;
 temp->next = ptr;
-(*list)->prev = ptr;
 ptr->prev = temp;
+(*list)->prev = ptr;
 ptr->next = (*list);
 *list = ptr;
 }
