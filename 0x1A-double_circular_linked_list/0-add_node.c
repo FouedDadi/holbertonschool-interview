@@ -39,8 +39,8 @@ ptr->str = str;
 if ((*list) == NULL)
 {
 (*list) = ptr;
-ptr->next = (*list);
-ptr->prev = (*list);
+ptr->next = ptr;
+ptr->prev = ptr;
 }
 else
 {
@@ -78,8 +78,8 @@ ptr->str = str;
 if ((*list) == NULL)
 {
 (*list) = ptr;
-ptr->next = (*list);
-ptr->prev = (*list);
+ptr->next = ptr;
+ptr->prev = ptr;
 }
 else
 {
