@@ -39,8 +39,8 @@ ptr->str = str;
 if ((*list) == NULL)
 {
 (*list) = ptr;
-ptr->next = ptr;
-ptr->prev = ptr;
+ptr->next = (*list);
+ptr->prev = (*list);
 }
 else
 {
@@ -50,7 +50,6 @@ while (temp->next != (*list))
 temp = temp->next;
 }
 temp->next = ptr;
-temp = (*list)->prev;
 ptr->prev = temp;
 (*list)->prev = ptr;
 ptr->next = (*list);
@@ -79,8 +78,8 @@ ptr->str = str;
 if ((*list) == NULL)
 {
 (*list) = ptr;
-ptr->next = ptr;
-ptr->prev = ptr;
+ptr->next = (*list);
+ptr->prev = (*list);
 }
 else
 {
@@ -90,7 +89,6 @@ while (temp->next != (*list))
 temp = temp->next;
 }
 temp->next = ptr;
-temp = (*list)->prev;
 ptr->prev = temp;
 (*list)->prev = ptr;
 ptr->next = (*list);
