@@ -21,6 +21,7 @@ typedef struct List
 	struct List *next;
 } List;
 
+List *ptr_node(char *str);
 List *add_node_end(List **list, char *str);
 List *add_node_begin(List **list, char *str);
 
