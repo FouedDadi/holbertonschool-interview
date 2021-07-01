@@ -49,9 +49,10 @@ while (temp->next != (*list))
 {
 temp = temp->next;
 }
+temp = (*list)->prev;
 temp->next = ptr;
-ptr->prev = temp;
 (*list)->prev = ptr;
+ptr->prev = temp;
 ptr->next = (*list);
 }
 }
@@ -88,9 +89,10 @@ while (temp->next != (*list))
 {
 temp = temp->next;
 }
+temp = (*list)->prev;
 temp->next = ptr;
-ptr->prev = temp;
 (*list)->prev = ptr;
+ptr->prev = temp;
 ptr->next = (*list);
 *list = ptr;
 }
