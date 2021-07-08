@@ -9,7 +9,7 @@
 int getMax(int *array, size_t size)
 {
 int mx = array[0];
-uint i;
+size_t i;
 for (i = 1; i < size; i++)
 if (array[i] > mx)
 mx = array[i];
@@ -24,23 +24,26 @@ return (mx);
  */
 void countSort(int *array, size_t size, int exp)
 {
-int freq[10] = {0};
+int count[10] = {0};
 int x;
 size_t i;
-int *output = NULL;
+int *output;
 output = malloc(sizeof(int *) * size);
+if (output == NULL)
+return;
 for (i = 0; i < size; i++)
-freq[(array[i] / exp) % 10]++;
+count[(array[i] / exp) % 10]++;
 for (i = 1; i < 10; i++)
-freq[i] += freq[i - 1];
+count[i] += count[i - 1];
 for (x = size - 1; x >= 0; x--)
 {
-output[freq[(array[x] / exp) % 10] - 1] = array[x];
-freq[(array[x] / exp) % 10]--;
+output[count[(array[x] / exp) % 10] - 1] = array[x];
+count[(array[x] / exp) % 10]--;
 }
 for (i = 0; i < size; i++)
 array[i] = output[i];
 free(output);
+print_array(array, size);
 }
 
 /**
@@ -55,6 +58,5 @@ int exp;
 for (exp = 1; m / exp > 0; exp *= 10)
 {
 countSort(array, size, exp);
-print_array(array, size);
 }
 }
