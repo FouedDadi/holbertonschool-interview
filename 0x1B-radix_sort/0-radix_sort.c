@@ -24,16 +24,17 @@ void countSort(int *array, size_t size, int exp)
 {
 int *output;
 output = malloc(sizeof(int) * size);
-unsigned int i;
+size_t i;
+int x;
 int count[10] = { 0 };
 for (i = 0; i < size; i++)
 count[(array[i] / exp) % 10]++;
 for (i = 1; i < 10; i++)
 count[i] += count[i - 1];
-for (int i = size - 1; i >= 0; i--)
+for (x = size - 1; x >= 0; x--)
 {
-output[count[(array[i] / exp) % 10] - 1] = array[i];
-count[(array[i] / exp) % 10]--;
+output[count[(array[x] / exp) % 10] - 1] = array[x];
+count[(array[x] / exp) % 10]--;
 }
 for (i = 0; i < size; i++)
 array[i] = output[i];
