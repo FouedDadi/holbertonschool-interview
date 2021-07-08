@@ -12,10 +12,9 @@ int mx = array[0];
 size_t i;
 if (array == NULL || size < 2)
 return (0);
-for (i = 1; i < size; i++){
+for (i = 1; i < size; i++)
 if (array[i] > mx)
 mx = array[i];
-}
 return (mx);
 }
 
