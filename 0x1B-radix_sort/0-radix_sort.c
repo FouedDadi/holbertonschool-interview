@@ -8,7 +8,7 @@
 int getMax(int *array, size_t size)
 {
 int mx = array[0];
-size_t i;
+uint i;
 for (i = 1; i < size; i++)
 if (array[i] > mx)
 mx = array[i];
