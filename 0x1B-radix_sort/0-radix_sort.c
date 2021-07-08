@@ -6,23 +6,22 @@
  * @size: size of array
  * @exp: exp
  */
-void countSort(int *array, size_t size, int exp)
+void countsort(int *array, size_t size, int exp)
 {
+int freq[10] = {0}, j;
 int *output = NULL;
-int x;
-output = malloc(sizeof(int *) * size);
 size_t i;
-int count[10] = { 0 };
+output = malloc(sizeof(int) * size);
 if (!output)
-    return;
+return;
 for (i = 0; i < size; i++)
-count[(array[i] / exp) % 10]++;
+freq[(array[i] / exp) % 10]++;
 for (i = 1; i < 10; i++)
-count[i] += count[i - 1];
-for (x = size - 1; x >= 0; x--)
+freq[i] += freq[i - 1];
+for (j = size - 1; j >= 0; j--)
 {
-output[count[(array[x] / exp) % 10] - 1] = array[x];
-count[(array[x] / exp) % 10]--;
+output[freq[(array[j] / exp) % 10] - 1] = array[j];
+freq[(array[j] / exp) % 10]--;
 }
 for (i = 0; i < size; i++)
 array[i] = output[i];
@@ -51,7 +50,7 @@ void radix_sort(int *array, size_t size)
 	}
 	while (max)
 	{
-		countSort(array, size, exp);
+		countsort(array, size, exp);
 		exp *= 10;
 		max /= 10;
 	}
