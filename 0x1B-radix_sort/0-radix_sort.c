@@ -22,11 +22,13 @@ return (mx);
  */
 void countSort(int *array, size_t size, int exp)
 {
-int *output;
-output = malloc(sizeof(int) * size);
-size_t i;
+int *output = NULL;
 int x;
+output = malloc(sizeof(int *) * size);
+size_t i;
 int count[10] = { 0 };
+if (!output)
+    return;
 for (i = 0; i < size; i++)
 count[(array[i] / exp) % 10]++;
 for (i = 1; i < 10; i++)
