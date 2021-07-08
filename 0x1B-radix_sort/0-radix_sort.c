@@ -22,7 +22,8 @@ return (mx);
  */
 void countSort(int *array, size_t size, int exp)
 {
-int output[size];
+int *output;
+output = malloc(sizeof(int) * size);
 unsigned int i;
 int count[10] = { 0 };
 for (i = 0; i < size; i++)
@@ -36,6 +37,7 @@ count[(array[i] / exp) % 10]--;
 }
 for (i = 0; i < size; i++)
 array[i] = output[i];
+free(output);
 }
 /**
  * radix_sort - LSD radix sort algorithm
