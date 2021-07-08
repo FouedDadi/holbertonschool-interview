@@ -38,6 +38,7 @@ count[(array[x] / exp) % 10]--;
 }
 for (i = 0; i < size; i++)
 array[i] = output[i];
+print_array(array, size);
 free(output);
 }
 /**
@@ -47,11 +48,23 @@ free(output);
  */
 void radix_sort(int *array, size_t size)
 {
-int m = getMax(array, size);
-int exp;
-for (exp = 1; m / exp > 0; exp *= 10)
-{
-countSort(array, size, exp);
-print_array(array, size);
-}
+	uint i = 1;
+	int max = 0, exp = 1;
+
+	if (!array || size < 2)
+		return;
+	max = array[0];
+	while (i < size)
+	{
+		if (array[i] > max)
+			max = array[i];
+		i++;
+	}
+	while (max)
+	{
+		countSort(array, size, exp);
+		exp *= 10;
+		max /= 10;
+	}
+    
 }
