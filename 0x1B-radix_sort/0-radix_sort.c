@@ -8,20 +8,21 @@
  */
 void countsort(int *array, size_t size, int exp)
 {
-int freq[10] = {0}, j;
-int *output = NULL;
+int freq[10] = {0};
+int x;
 size_t i;
-output = malloc(sizeof(int) * size);
-if (!output)
+int *output = NULL;
+output = malloc(sizeof(int *) * size);
+if (output == NULL)
 return;
 for (i = 0; i < size; i++)
 freq[(array[i] / exp) % 10]++;
 for (i = 1; i < 10; i++)
 freq[i] += freq[i - 1];
-for (j = size - 1; j >= 0; j--)
+for (x = size - 1; x >= 0; x--)
 {
-output[freq[(array[j] / exp) % 10] - 1] = array[j];
-freq[(array[j] / exp) % 10]--;
+output[freq[(array[x] / exp) % 10] - 1] = array[x];
+freq[(array[x] / exp) % 10]--;
 }
 for (i = 0; i < size; i++)
 array[i] = output[i];
