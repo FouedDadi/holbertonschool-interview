@@ -43,7 +43,6 @@ count[(array[x] / exp) % 10]--;
 for (i = 0; i < size; i++)
 array[i] = output[i];
 free(output);
-print_array(array, size);
 }
 
 /**
@@ -58,5 +57,6 @@ int exp;
 for (exp = 1; m / exp > 0; exp *= 10)
 {
 countSort(array, size, exp);
+print_array(array, size);
 }
 }
