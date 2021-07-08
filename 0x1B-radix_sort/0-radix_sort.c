@@ -7,10 +7,9 @@
  */
 int getMax(int *array, size_t size)
 {
-int n = size;
 int mx = array[0];
-int i;
-for (i = 1; i < n; i++)
+unsigned int i;
+for (i = 1; i < size; i++)
 if (array[i] > mx)
 mx = array[i];
 return (mx);
@@ -23,19 +22,19 @@ return (mx);
  */
 void countSort(int *array, size_t size, int exp)
 {
-int n = size;
-int output[n];
-int i, count[10] = { 0 };
-for (i = 0; i < n; i++)
+int output[size];
+unsigned int i;
+int count[10] = { 0 };
+for (i = 0; i < size; i++)
 count[(array[i] / exp) % 10]++;
 for (i = 1; i < 10; i++)
 count[i] += count[i - 1];
-for (i = n - 1; i >= 0; i--)
+for (int i = size - 1; i >= 0; i--)
 {
 output[count[(array[i] / exp) % 10] - 1] = array[i];
 count[(array[i] / exp) % 10]--;
 }
-for (i = 0; i < n; i++)
+for (i = 0; i < size; i++)
 array[i] = output[i];
 }
 /**
@@ -45,12 +44,11 @@ array[i] = output[i];
  */
 void radix_sort(int *array, size_t size)
 {
-int n = size;
-int m = getMax(array, n);
+int m = getMax(array, size);
 int exp;
 for (exp = 1; m / exp > 0; exp *= 10)
 {
-countSort(array, n, exp);
+countSort(array, size, exp);
 print_array(array, size);
 }
 }
