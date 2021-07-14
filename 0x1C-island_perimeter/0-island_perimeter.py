@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""island perimiter problem"""
+"""island perimeter problem"""
 
 
 def island_perimeter(grid):
