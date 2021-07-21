@@ -5,6 +5,7 @@
 
 /**
  * isBSTUtil - utility function needed for isBST
+ * @tree: pointer to the root node of the tree
  * @min: Int min
  * @max: Int max
  * Return: 1 if tree is BST tree, 0 if not
