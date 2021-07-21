@@ -4,6 +4,32 @@
 #include "binary_trees.h"
 
 /**
+ * isBSTUtil - utility function needed for isBST
+ * @min: Int min
+ * @max: Int max
+ * Return: 1 if tree is BST tree, 0 if not
+ */
+int isBSTUtil(const binary_tree_t *tree, int min, int max)
+{
+if (tree == NULL)
+return (1);
+if (tree->n < min || tree->n > max)
+return (0);
+return (isBSTUtil(tree->left, min, tree->n - 1) &&
+isBSTUtil(tree->right, tree->n + 1, max));
+}
+
+/**
+ * isBST - check if binary tree is BST tree
+ * @tree: pointer to the root node of the tree
+ * Return: 1 if tree is BST tree, 0 if not
+ */
+int isBST(const binary_tree_t *tree)
+{
+return (isBSTUtil(tree, INT_MIN, INT_MAX));
+}
+
+/**
  * getMax - check max of two numbers a and b
  * @a: Int a
  * @b: Int b
@@ -41,12 +67,12 @@ int binary_tree_is_avl(const binary_tree_t *tree)
 {
 int leftHeight, rightHeight;
 if (tree == NULL)
-return (0);
+return (1);
 leftHeight = getHeight(tree->left);
 rightHeight = getHeight(tree->right);
 if (abs(leftHeight - rightHeight) <= 1 &&
 binary_tree_is_avl(tree->right) &&
-binary_tree_is_avl(tree->left))
+binary_tree_is_avl(tree->left) && isBST(tree))
 return (1);
 else
 return (0);
