@@ -31,17 +31,13 @@ return (isBSTUtil(tree, INT_MIN, INT_MAX));
 }
 
 /**
- * getMax - check max of two numbers a and b
- * @a: Int a
- * @b: Int b
- * Return: a if a > b, b if not
+ * binary_tree_is_bst - check if binary tree is BST tree
+ * @tree: pointer to the root node of the tree
+ * Return: 1 if tree is BST tree, 0 if not
  */
-int getMax(int a, int b)
+int binary_tree_is_bst(const binary_tree_t *tree)
 {
-if (a >= b)
-return (a);
-else
-return (b);
+	return (tree ? isBST(tree) : 0);
 }
 
 /**
@@ -56,7 +52,10 @@ if (tree == NULL)
 return (0);
 leftHeight = getHeight(tree->left);
 rightHeight = getHeight(tree->right);
-return (getMax(leftHeight, rightHeight) + 1);
+if (leftHeight >= rightHeight)
+return (leftHeight + 1);
+else
+return (rightHeight + 1);
 }
 
 /**
@@ -73,7 +72,7 @@ leftHeight = getHeight(tree->left);
 rightHeight = getHeight(tree->right);
 if (abs(leftHeight - rightHeight) <= 1 &&
 binary_tree_is_avl(tree->right) &&
-binary_tree_is_avl(tree->left) && isBST(tree))
+binary_tree_is_avl(tree->left) && binary_tree_is_bst(tree))
 return (1);
 else
 return (0);
