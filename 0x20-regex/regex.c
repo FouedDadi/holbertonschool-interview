@@ -14,8 +14,10 @@ if (*pattern == '.' || *str == *pattern)
 return (regex_match(str + 1, pattern + 1));
 if (*pattern == '*')
 {
-if (*str != '\0' && (*str == *pattern || *pattern == '.'))
-return ((regex_match(str, pattern + 2) || regex_match(str + 1, pattern)));
+if (*str == '\0')
+return (regex_match(str, pattern + 1));
+else
+return (regex_match(str + 1, pattern) || regex_match(str, pattern + 1));
 }
 return (0);
 }
